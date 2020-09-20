@@ -1,8 +1,11 @@
 {
   "name": "react-backoffice",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "yarn dist",
     "dist": "yarn lint && rm -rf dist && tsc",
