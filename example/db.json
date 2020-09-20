@@ -1,0 +1,85 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Samuel Sonny",
+      "lastName": "Salim",
+      "age": 28,
+      "dob": "1991-04-07T00:00:00.000Z",
+      "gender": "male",
+      "education": [
+        "tk",
+        "sd",
+        "smp",
+        "sma",
+        "s1"
+      ],
+      "job": "developer",
+      "industry": [
+        "technology",
+        "transportation"
+      ],
+      "minSalary": 3000000,
+      "maxSalary": 5000000,
+      "fromActiveDate": "2012-04-07T00:00:00.000Z",
+      "toActiveDate": "2020-04-07T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "firstName": "Samuel Sonny",
+      "lastName": "Salim",
+      "age": 28,
+      "dob": "1991-04-07T00:00:00.000Z",
+      "gender": "male",
+      "education": [
+        "tk",
+        "sd",
+        "smp",
+        "sma",
+        "s1"
+      ],
+      "job": "developer",
+      "industry": [
+        "technology",
+        "transportation"
+      ],
+      "minSalary": 3000000,
+      "maxSalary": 5000000,
+      "fromActiveDate": "2012-04-07T00:00:00.000Z",
+      "toActiveDate": "2020-04-07T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "firstName": "Samuel Sonny",
+      "lastName": "Salim",
+      "age": 28,
+      "dob": "1991-04-07T00:00:00.000Z",
+      "gender": "male",
+      "education": [
+        "tk",
+        "sd",
+        "smp",
+        "sma",
+        "s1"
+      ],
+      "job": "developer",
+      "industry": [
+        "technology",
+        "transportation"
+      ],
+      "minSalary": 3000000,
+      "maxSalary": 5000000,
+      "fromActiveDate": "2012-04-07T00:00:00.000Z",
+      "toActiveDate": "2020-04-07T00:00:00.000Z"
+    }
+  ],
+  "educations": [
+    { "id": "tk", "name": "Kindergarten" },
+    { "id": "sd", "name": "Elementary School" },
+    { "id": "smp", "name": "Junior High School" },
+    { "id": "sma", "name": "Senior High School" },
+    { "id": "s1", "name": "Under Graduate" },
+    { "id": "s2", "name": "Graduate" },
+    { "id": "s3", "name": "Post Graduate" }
+  ]
+}
