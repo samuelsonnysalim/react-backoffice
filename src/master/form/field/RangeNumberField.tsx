@@ -48,7 +48,7 @@ const RangeNumberField = createField<Value, {}, RestPropertyName, Placeholder>(
         <Col className="text-center py-1" md={2}>
           <span className="d-none d-md-inline">-</span>
           <span className="d-inline d-sm-none">
-            <ArrowDownIcon size={16} />
+            <ArrowDownIcon verticalAlign="middle" size={16} />
           </span>
         </Col>
         <Col md={5}>

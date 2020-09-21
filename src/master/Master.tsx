@@ -201,10 +201,10 @@ const Master = (props: Props): JSX.Element => {
       return (
         <Actions className="text-center mx-auto">
           <Button className="mr-1" variant="outline-primary" size="sm" onClick={() => openForm(datum)}>
-            <PencilIcon size={16} />
+            <PencilIcon verticalAlign="middle" size={16} />
           </Button>
           <Button variant="outline-danger" size="sm" onClick={() => deleteData([datum])}>
-            <TrashcanIcon size={16} />
+            <TrashcanIcon verticalAlign="middle" size={16} />
           </Button>
         </Actions>
       );

@@ -13,7 +13,7 @@ const TagList = (props: Props): JSX.Element => {
   return (
     <div className="mb-3">
       <Button variant="link" onClick={props.onAddNewButtonClick}>
-        <PlusCircleIcon className="mr-2" size={16} />
+        <PlusCircleIcon className="mr-2" verticalAlign="middle" size={16} />
         {props.addNewLabel}
       </Button>
       {props.tags.map((tag, index) => (

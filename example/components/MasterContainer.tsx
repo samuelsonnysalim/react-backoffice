@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect, ReactNode } from "react";
-import Router from "next/router";
 import { Master, Response, usePagination, useSorting, SortedFields } from "react-backoffice";
+import Router from "next/router";
 
 export interface Query {
   [key: string]: string | string[];

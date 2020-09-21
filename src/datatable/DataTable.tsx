@@ -159,11 +159,11 @@ const DataTable = (props: Props): JSX.Element => {
                       {props.sortable && (
                         <HeaderCellContentSort>
                           {!order ? (
-                            <UnfoldIcon className="d-block" size={16} />
+                            <UnfoldIcon className="d-block" verticalAlign="middle" size={16} />
                           ) : order === "asc" ? (
-                            <FoldDownIcon size={16} />
+                            <FoldDownIcon verticalAlign="middle" size={16} />
                           ) : (
-                            <FoldUpIcon size={16} />
+                            <FoldUpIcon verticalAlign="middle" size={16} />
                           )}
                         </HeaderCellContentSort>
                       )}

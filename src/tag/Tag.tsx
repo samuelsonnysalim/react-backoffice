@@ -40,7 +40,7 @@ const Tag = (props: Partial<Props>): JSX.Element => (
           </>
         )}
       </TagContent>
-      <XCircleFillIcon className="ml-1 text-light" size={16} />
+      <XCircleFillIcon className="ml-1 text-light" verticalAlign="middle" size={16} />
     </Badge>
   </TagContainer>
 );

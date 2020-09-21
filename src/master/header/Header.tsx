@@ -23,14 +23,15 @@ const Header = (props: Props): JSX.Element => {
             <Col className="pr-1 pr-lg-2" xs={6} lg={6}>
               {props.showDeleteSelectedButton && (
                 <Button variant="outline-danger" block onClick={props.onDeleteSelectedButtonClick}>
-                  <TrashcanIcon size={16} />{" "}
+                  <TrashcanIcon verticalAlign="middle" size={16} />{" "}
                   <span className="d-none d-lg-inline">{props.deleteSelectedButtonLabel}</span>
                 </Button>
               )}
             </Col>
             <Col className="pl-1 pl-lg-2" xs={6} lg={6}>
               <Button variant="primary" block onClick={props.onAddNewButtonClick}>
-                <PlusIcon size={16} /> <span className="d-none d-lg-inline">{props.addNewButtonLabel}</span>
+                <PlusIcon verticalAlign="middle" size={16} />{" "}
+                <span className="d-none d-lg-inline">{props.addNewButtonLabel}</span>
               </Button>
             </Col>
           </Row>
