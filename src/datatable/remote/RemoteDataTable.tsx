@@ -21,6 +21,7 @@ export type Response = AxiosResponse;
 
 interface Props {
   columns: { [propertyName: string]: string };
+  dataResourceHeaders: { [key: string]: string };
   dataResourceUrl: string;
   dataPropertyPath: string;
   pagination: RemoteDataTablePagination;
@@ -62,7 +63,9 @@ const RemoteDataTable = (props: Partial<Props>, ref: Ref<RemoteDataTableRef>): J
           props.sorting?.sortingDataResourceUrl || props.pagination?.paginatedDataResourceUrl || props.dataResourceUrl;
         if (lastLoadedDataResourceUrl !== dataResourceUrl) {
           setLoading(true);
-          const response = props.interceptResponse(await axios.get(dataResourceUrl));
+          const response = props.interceptResponse(
+            await axios.get(dataResourceUrl, { headers: props.dataResourceHeaders }),
+          );
           if (response.data) {
             let responseData = response.data;
             if (props.dataPropertyPath) {
@@ -97,7 +100,7 @@ const RemoteDataTable = (props: Partial<Props>, ref: Ref<RemoteDataTableRef>): J
       }
       setLoading(false);
     }
-  }, [props.dataResourceUrl, props.pagination, props.sorting]);
+  }, [props.dataResourceHeaders, props.dataResourceUrl, props.pagination, props.sorting]);
 
   const onSortedFieldChange = useCallback((sortedFields: SortedFields) => {
     props.sorting?.setSortedFields(sortedFields);

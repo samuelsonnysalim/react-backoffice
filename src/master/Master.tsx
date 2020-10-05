@@ -18,6 +18,7 @@ import Confirm, { ConfirmRef } from "../modal/confirm/Confirm";
 interface Props {
   title: string;
   children: ReactNode;
+  dataFetchingResourceHeaders: { [key: string]: string };
   dataFetchingResourceUrl: string;
   dataFetchingPropertyPath: string;
   dataFetchingPagination: Pagination;
@@ -227,6 +228,7 @@ const Master = (props: Props): JSX.Element => {
         />
         <RemoteDataTable
           ref={remoteDataTable}
+          dataResourceHeaders={props.dataFetchingResourceHeaders}
           dataResourceUrl={props.dataFetchingResourceUrl}
           dataPropertyPath={props.dataFetchingPropertyPath}
           pagination={props.dataFetchingPagination}

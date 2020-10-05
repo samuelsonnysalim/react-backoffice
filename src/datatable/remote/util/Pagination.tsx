@@ -21,7 +21,7 @@ interface UsePaginationConfig {
   maxPagePropertyPath: string;
   currentPage: number;
   size: number;
-  isZeroPageBased: false;
+  isZeroPageBased: boolean;
   pageQueryString: string;
   sizeQueryString: string;
 }
@@ -40,9 +40,9 @@ export const usePagination = (config: Partial<UsePaginationConfig> = {}): Pagina
   const [dataResourceUrl, setDataResourceUrl] = useState<string>();
 
   if (page > maxPage) {
-    page = config.isZeroPageBased ? maxPage - 1 : maxPage;
-  } else if (page < (config.isZeroPageBased ? 0 : 1)) {
-    page = config.isZeroPageBased ? 0 : 1;
+    page = maxPage;
+  } else if (page < 1) {
+    page = 1;
   }
 
   useEffect(() => {
@@ -59,8 +59,8 @@ export const usePagination = (config: Partial<UsePaginationConfig> = {}): Pagina
     maxPagePropertyPath: config.maxPagePropertyPath || defaultMaxPagePropertyPath,
     paginatedDataResourceUrl: dataResourceUrl
       ? `${dataResourceUrl}${dataResourceUrl.includes("?") ? "&" : "?"}${config.pageQueryString ||
-          defaultPageQueryString}=${page}&${config.sizeQueryString || defaultSizeQueryString}=${config.size ||
-          defaultSize}`
+          defaultPageQueryString}=${config.isZeroPageBased ? page - 1 : page}&${config.sizeQueryString ||
+          defaultSizeQueryString}=${config.size || defaultSize}`
       : null,
     isZeroPageBased: config.isZeroPageBased ? true : false,
     setPage,
@@ -79,25 +79,19 @@ export const PaginationComponent = (props: Partial<Props>): JSX.Element =>
   props.pagination && props.visible ? (
     <>
       <PaginationBootstrap className={props.className}>
-        <PaginationBootstrap.First onClick={() => props.pagination.setPage(props.pagination.isZeroPageBased ? 0 : 1)} />
+        <PaginationBootstrap.First onClick={() => props.pagination.setPage(1)} />
         <PaginationBootstrap.Prev onClick={() => props.pagination.setPage(props.pagination.page - 1)} />
         {[...Array(props.pagination.maxPage)].map((_, index) => (
           <PaginationBootstrap.Item
             key={index}
-            active={index + (props.pagination.isZeroPageBased ? 0 : 1) === props.pagination.page}
-            onClick={() => props.pagination.setPage(index + (props.pagination.isZeroPageBased ? 0 : 1))}
+            active={index + 1 === props.pagination.page}
+            onClick={() => props.pagination.setPage(index + 1)}
           >
             {index + 1}
           </PaginationBootstrap.Item>
         ))}
         <PaginationBootstrap.Next onClick={() => props.pagination.setPage(props.pagination.page + 1)} />
-        <PaginationBootstrap.Last
-          onClick={() =>
-            props.pagination.setPage(
-              props.pagination.isZeroPageBased ? props.pagination.maxPage - 1 : props.pagination.maxPage,
-            )
-          }
-        />
+        <PaginationBootstrap.Last onClick={() => props.pagination.setPage(props.pagination.maxPage)} />
       </PaginationBootstrap>
       <div className="clearfix" />
     </>
