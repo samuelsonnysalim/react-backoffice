@@ -81,6 +81,7 @@ export const createField = <
     formFactory?.observe(props.propertyName, onValueUpdated);
 
     if (props.showOnForm) {
+      const inboundRestParser = formFactory?.getInboundRestParsers<DataType>(props.propertyName);
       return (
         <Form.Group controlId={props.propertyName}>
           <Form.Label>{props.label}</Form.Label>
@@ -92,7 +93,11 @@ export const createField = <
           )}
           <InputFieldComponent
             {...props}
-            value={formFactory?.getField<DataType>(props.propertyName)}
+            value={
+              inboundRestParser
+                ? inboundRestParser(formFactory?.getField<DataType>(props.propertyName))
+                : formFactory?.getField<DataType>(props.propertyName)
+            }
             onChange={onChange}
             isLoading={isLoading}
             setLoading={setLoading}

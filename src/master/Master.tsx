@@ -170,6 +170,11 @@ const Master = (props: Props): JSX.Element => {
 
   const customRenderCell = useCallback((datum: Datum, propertyName: string): ReactNode => {
     const childProps = childrenProps.find(childProps => childProps.propertyName === propertyName);
+
+    if (childProps.customInboundRestParser) {
+      datum[propertyName] = childProps.customInboundRestParser(datum[propertyName]);
+    }
+
     if (childProps.customRenderCell) {
       return childProps.customRenderCell(datum);
     } else {

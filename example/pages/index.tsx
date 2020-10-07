@@ -71,10 +71,11 @@ const Index = (props: Props): JSX.Element => (
     <RemoteCheckField
       label="Education"
       propertyName="education"
-      showOnDataTable={false}
+      // showOnDataTable={false}
       optionsResourceUrl={`${process.env.API_BASE_URL}/educations`}
       optionValuePropertyName="id"
       optionLabelPropertyName="name"
+      customInboundRestParser={value => (typeof value === "string" ? value?.split(",") : value)}
     />
     <SelectField
       label="Job"

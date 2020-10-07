@@ -77,6 +77,7 @@ class FormFactory {
       value,
       restValue: typeof restPropertyName === "string" ? value : this.composeCustomRestValue(restPropertyName, value),
     };
+
     if (this.observers[propertyName]) {
       this.observers[propertyName](value);
     }
@@ -118,6 +119,14 @@ class FormFactory {
       }
     });
     return JSON.parse(JSON.stringify(result));
+  }
+
+  getInboundRestParsers<DataType>(propertyName): (value: any) => DataType {
+    return this.inboundRestParsers[propertyName];
+  }
+
+  getOutboundRestParsers<DataType>(propertyName): (value: DataType) => any {
+    return this.outboundRestParsers[propertyName];
   }
 }
 

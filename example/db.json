@@ -9,13 +9,7 @@
       "age": 28,
       "dob": "1991-04-07T00:00:00.000Z",
       "gender": "male",
-      "education": [
-        "tk",
-        "sd",
-        "smp",
-        "sma",
-        "s1"
-      ],
+      "education": "tk,smp,sma",
       "job": "developer",
       "industry": [
         "technology",
