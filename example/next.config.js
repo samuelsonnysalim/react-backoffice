@@ -10,7 +10,6 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
-const dev = process.env.NODE_ENV !== "production";
 
 module.exports = withBundleAnalyzer(
   withSass(
@@ -18,11 +17,6 @@ module.exports = withBundleAnalyzer(
       distDir: ".next",
       crossOrigin: "anonymous",
       poweredByHeader: false,
-      cssModules: true,
-      cssLoaderOptions: {
-        importLoaders: 1,
-        localIdentName: dev ? "[name]-[local]" : "[hash:base64:5]",
-      },
       webpack(config, { isServer }) {
         config.resolve.plugins = config.resolve.plugins || [];
         config.plugins = config.plugins || [];

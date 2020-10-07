@@ -3,9 +3,7 @@ import { Form } from "react-bootstrap";
 import { createField } from "./BaseField";
 
 const NumberField = createField<number>(props => {
-  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    props.onChange(e.target.valueAsNumber);
-  }, []);
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => props.onChange(e.target.valueAsNumber), []);
 
   return (
     <Form.Control

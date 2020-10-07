@@ -1,6 +1,7 @@
 import React from "react";
 import {
   TextField,
+  MultilineTextField,
   NumberField,
   DateField,
   RadioField,
@@ -28,6 +29,20 @@ const Index = (props: Props): JSX.Element => (
     <TextField label="ID" propertyName="id" showOnForm={false} />
     <TextField label="First Name" propertyName="firstName" inputPlaceholder="Input First Name" />
     <TextField label="Last Name" propertyName="lastName" inputPlaceholder="Input Last Name" />
+    <TextField
+      label="Phone No"
+      propertyName="phoneNo"
+      inputPlaceholder="Input Phone No"
+      type="tel"
+      showOnDataTable={false}
+    />
+    <MultilineTextField
+      label="Address"
+      propertyName="address"
+      inputPlaceholder="Input Address"
+      showOnDataTable={false}
+      useRichtext
+    />
     <NumberField label="Age" propertyName="age" inputPlaceholder="Input Age" />
     <DateField label="Date of Birth" propertyName="dob" inputPlaceholder="Input Date of Birth" />
     <RadioField

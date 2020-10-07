@@ -7,9 +7,7 @@ interface Props {
 }
 
 export const InputFieldComponent = (props: InputFieldProps<string, string, string> & Props): JSX.Element => {
-  const onChange = useCallback(({ value }: { value: string; label: string }) => {
-    props.onChange(value);
-  }, []);
+  const onChange = useCallback(({ value }: { value: string; label: string }) => props.onChange(value), []);
 
   return (
     <Select

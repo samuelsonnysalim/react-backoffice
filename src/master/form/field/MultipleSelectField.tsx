@@ -8,9 +8,10 @@ interface Props {
 }
 
 export const InputFieldComponent = (props: InputFieldProps<string[], string, string> & Props): JSX.Element => {
-  const onChange = useCallback((selectedOptions: { value: string; label: string }[]) => {
-    props.onChange(selectedOptions?.map(({ value }) => value));
-  }, []);
+  const onChange = useCallback(
+    (selectedOptions: { value: string; label: string }[]) => props.onChange(selectedOptions?.map(({ value }) => value)),
+    [],
+  );
 
   return (
     <Select

@@ -27,12 +27,9 @@ interface Props {
 
 const RangeDateField = createField<Value, Props, RestPropertyName, Placeholder>(
   props => {
-    const onChangeMin = useCallback(
-      (value: Date) => {
-        props.onChange({ min: value, max: props.value?.max });
-      },
-      [props.value],
-    );
+    const onChangeMin = useCallback((value: Date) => props.onChange({ min: value, max: props.value?.max }), [
+      props.value,
+    ]);
 
     const onChangeMax = useCallback(
       (value: Date) => {

@@ -21,9 +21,7 @@ interface Placeholder {
 const RangeNumberField = createField<Value, {}, RestPropertyName, Placeholder>(
   props => {
     const onChangeMin = useCallback(
-      (e: ChangeEvent<HTMLInputElement>) => {
-        props.onChange({ min: e.target.valueAsNumber, max: props.value?.max });
-      },
+      (e: ChangeEvent<HTMLInputElement>) => props.onChange({ min: e.target.valueAsNumber, max: props.value?.max }),
       [props.value],
     );
 
