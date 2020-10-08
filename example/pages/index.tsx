@@ -5,11 +5,11 @@ import {
   NumberField,
   DateField,
   RadioField,
-  RemoteCheckField,
   SelectField,
   MultipleSelectField,
   RangeNumberField,
   RangeDateField,
+  RemoteMultipleSelectField,
 } from "react-backoffice";
 import MasterContainer, { Query } from "../components/MasterContainer";
 
@@ -68,14 +68,14 @@ const Index = (props: Props): JSX.Element => (
       ]}
       // customOutboundRestParser={value => value?.join(",")}
     /> */}
-    <RemoteCheckField
+    <RemoteMultipleSelectField
       label="Education"
       propertyName="education"
       // showOnDataTable={false}
       optionsResourceUrl={`${process.env.API_BASE_URL}/educations`}
       optionValuePropertyName="id"
       optionLabelPropertyName="name"
-      customInboundRestParser={value => (typeof value === "string" ? value?.split(",") : value)}
+      customInboundRestParser={value => value?.split(",")}
     />
     <SelectField
       label="Job"

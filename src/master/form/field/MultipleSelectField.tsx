@@ -26,7 +26,7 @@ export const InputFieldComponent = (props: InputFieldProps<string[], string, str
 
 export const TableCellComponent = (props: TableCellProps<string> & Props): JSX.Element => {
   const value = props.datum[props.restPropertyName || props.propertyName] as string[];
-  const selectedOptions = props.options?.filter(option => value.includes(option.value));
+  const selectedOptions = props.options?.filter(option => value?.includes(option.value));
   return (
     <>
       {selectedOptions?.map(({ label }, index) => (
