@@ -2,11 +2,34 @@ import axios from "axios";
 import { useCallback } from "react";
 import { throwRemoteResponseError } from "./Error";
 
-const remoteDataCache = {};
+interface RemoteDataCache {
+  [resourceUrl: string]: Promise<any[]>;
+}
 
 interface LoadData {
   loadData: () => Promise<any[] | undefined | null>;
 }
+
+const remoteDataCache: RemoteDataCache = {};
+
+const _loadRemoteData = async (
+  resourceUrl: string,
+  propertyPathName: string,
+  propertyPathValue: string,
+  shouldBeAnArray = true,
+): Promise<any[]> => {
+  const response = await axios.get(resourceUrl);
+  let responseData = response.data;
+  if (propertyPathValue) {
+    responseData = propertyPathValue.split(".").reduce((parent, propertyName) => parent[propertyName], responseData);
+  }
+  if ((shouldBeAnArray && Array.isArray(responseData)) || !shouldBeAnArray) {
+    return responseData;
+  } else {
+    throwRemoteResponseError(propertyPathName, propertyPathValue, responseData);
+    return null;
+  }
+};
 
 export const loadRemoteData = async (
   resourceUrl: string,
@@ -14,24 +37,16 @@ export const loadRemoteData = async (
   propertyPathValue: string,
   shouldBeAnArray = true,
   cached = false,
-): Promise<any> => {
+): Promise<any[]> => {
   if (cached && remoteDataCache[resourceUrl]) {
-    return remoteDataCache[resourceUrl];
+    return await remoteDataCache[resourceUrl];
   }
 
-  const response = await axios.get(resourceUrl);
-  let responseData = response.data;
-  if (propertyPathValue) {
-    responseData = propertyPathValue.split(".").reduce((parent, propertyName) => parent[propertyName], responseData);
+  const promise = _loadRemoteData(resourceUrl, propertyPathName, propertyPathValue, shouldBeAnArray);
+  if (cached) {
+    remoteDataCache[resourceUrl] = promise;
   }
-  if ((shouldBeAnArray && Array.isArray(responseData)) || !shouldBeAnArray) {
-    if (cached) {
-      remoteDataCache[resourceUrl] = responseData;
-    }
-    return responseData;
-  } else {
-    throwRemoteResponseError(propertyPathName, propertyPathValue, responseData);
-  }
+  return await promise;
 };
 
 export const useLoadData = (

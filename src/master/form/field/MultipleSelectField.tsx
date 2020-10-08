@@ -30,7 +30,7 @@ export const TableCellComponent = (props: TableCellProps<string> & Props): JSX.E
   return (
     <>
       {selectedOptions?.map(({ label }, index) => (
-        <Badge key={index} variant="secondary">
+        <Badge key={index} variant="secondary" className="mr-1">
           {label}
         </Badge>
       ))}
