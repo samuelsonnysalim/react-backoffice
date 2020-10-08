@@ -149,9 +149,9 @@ const FormContainer = (props: Props): JSX.Element => {
       Children.forEach(props.children, (field: ReactElement) => {
         const fieldProps = field.props as BaseFieldProps;
         if (fieldProps.showOnForm) {
-          if (typeof fieldProps.restPropertyName === "string" && datum[fieldProps.restPropertyName]) {
+          if (typeof fieldProps.restPropertyName === "string" && datum[fieldProps.restPropertyName] != null) {
             factory.setField(fieldProps.propertyName, fieldProps.restPropertyName, datum[fieldProps.restPropertyName]);
-          } else if (!fieldProps.restPropertyName && datum[fieldProps.propertyName]) {
+          } else if (!fieldProps.restPropertyName && datum[fieldProps.propertyName] != null) {
             factory.setField(
               fieldProps.propertyName,
               fieldProps.restPropertyName || fieldProps.propertyName,
